@@ -3,6 +3,7 @@ package com.example.myapplication;
 import org.junit.runners.model.InitializationError;
 import org.robolectric.AndroidManifest;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.SdkConfig;
 import org.robolectric.annotation.Config;
 
 import java.io.File;
@@ -34,5 +35,14 @@ public class CustomRobolectricRunner extends RobolectricTestRunner {
         properties.setProperty(key, value);
         return new Config.Implementation(config,
                 Config.Implementation.fromProperties(properties));
+    }
+
+    @Override
+    protected SdkConfig pickSdkVersion(
+            AndroidManifest appManifest, Config config) {
+        // current Robolectric supports not the latest android SDK version
+        // so we must downgrade to simulate the latest supported version.
+        config = overwriteConfig(config, "emulateSdk", "18");
+        return super.pickSdkVersion(appManifest, config);
     }
 }
