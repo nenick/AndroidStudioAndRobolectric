@@ -4,6 +4,7 @@ import org.junit.runners.model.InitializationError;
 import org.robolectric.AndroidManifest;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.SdkConfig;
+import org.robolectric.SdkEnvironment;
 import org.robolectric.annotation.Config;
 
 import java.io.File;
@@ -44,5 +45,13 @@ public class CustomRobolectricRunner extends RobolectricTestRunner {
         // so we must downgrade to simulate the latest supported version.
         config = overwriteConfig(config, "emulateSdk", "18");
         return super.pickSdkVersion(appManifest, config);
+    }
+
+    @Override
+    protected void configureShadows(SdkEnvironment sdkEnvironment, Config config) {
+        Properties properties = new Properties();
+        // to add more shadows use white space separation + " " +
+        properties.setProperty("shadows", ShadowSupportMenuInflater.class.getName());
+        super.configureShadows(sdkEnvironment, new Config.Implementation(config, Config.Implementation.fromProperties(properties)));
     }
 }
