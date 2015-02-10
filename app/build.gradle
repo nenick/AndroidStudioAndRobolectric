@@ -17,6 +17,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        demo {
+            applicationId "com.example.myapplication"
+            versionName "1.0-demo"
+        }
+        full {
+            applicationId "com.example.myapplication"
+            versionName "1.0-full"
+        }
+    }
 }
 
 dependencies {
