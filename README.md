@@ -7,9 +7,12 @@
 
 For details see http://nenick-android.blogspot.de/2015/02/android-studio-110-beta-4-and.html
 
+### Get Started
 Just clone and open this project with Android Studio, right click on a test and get started with robolectric.
 
 Here an example with flavors https://github.com/nenick/AndroidStudioAndRobolectric/tree/flavors
+
+### Test not found
 
 The issue with missing `src/test/resources` is tracked at https://code.google.com/p/android/issues/detail?id=136013 there also some workarounds to include test resources.
 
