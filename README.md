@@ -12,3 +12,7 @@ Just clone and open this project with Android Studio, right click on a test and 
 Here an example with flavors https://github.com/nenick/AndroidStudioAndRobolectric/tree/flavors
 
 The issue with missing `src/test/resources` is tracked at https://code.google.com/p/android/issues/detail?id=136013 there also some workarounds to include test resources.
+
+## split-select' specified for property 'splitSelectExe' does not exist.
+
+This is tracked at https://code.google.com/p/android/issues/detail?id=135513. This will occur if you try to install the app from command-line. You can install the app using Android Studio. Tests from command-line are working.
