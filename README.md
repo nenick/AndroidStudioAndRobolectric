@@ -8,7 +8,9 @@
 For details see http://nenick-android.blogspot.de/2015/02/android-studio-110-beta-4-and.html
 
 ### Get Started
-Just clone and open this project with Android Studio, right click on a test and get started with robolectric.
+1. Just clone and open this project with Android Studio
+2. Change the Build Variant // Test Artifact to Unit Test (http://tools.android.com/tech-docs/unit-testing-support)
+3. Right click on a test and get started with robolectric.
 
 Here an example with flavors https://github.com/nenick/AndroidStudioAndRobolectric/tree/flavors
 
