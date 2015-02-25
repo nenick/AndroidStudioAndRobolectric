@@ -1,7 +1,7 @@
 # AndroidStudioAndRobolectric
 
-- Android Studio 1.1 (RC 1)
-- android gradle build tools 1.1.0-rc3
+- Android Studio 1.1
+- android gradle build tools 1.1.0
 - Robolectric 2.4
 - no extra plugins or to complex custom setup
 
