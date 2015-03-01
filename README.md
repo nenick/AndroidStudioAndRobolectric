@@ -17,8 +17,3 @@ Here an example with flavors https://github.com/nenick/AndroidStudioAndRobolectr
 
 ### Multi Modules (Android Library)
 Here an example with android library module https://github.com/nenick/AndroidStudioAndRobolectric/tree/library
-
-### Known Issues
-#### Test resources not found
-
-The issue with missing `src/test/resources` is tracked at https://code.google.com/p/android/issues/detail?id=136013 there also some workarounds to include test resources.
