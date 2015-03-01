@@ -3,7 +3,7 @@
 - Android Studio 1.1
 - android gradle build tools 1.1.0
 - Robolectric 2.4
-- no extra plugins or to complex custom setup
+- no extra plugins or to complex custom setup necessary (but if like you can use https://github.com/robolectric/robolectric-gradle-plugin)
 
 For details see http://nenick-android.blogspot.de/2015/02/android-studio-110-beta-4-and.html
 
