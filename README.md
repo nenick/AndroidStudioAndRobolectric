@@ -3,7 +3,7 @@
 - Android Studio 1.1
 - android gradle build tools 1.1.0
 - Robolectric 2.4
-- no extra plugins or to complex custom setup necessary (but if like you can use https://github.com/robolectric/robolectric-gradle-plugin)
+- no extra plugins or to complex custom setup necessary (but if like you can try https://github.com/robolectric/robolectric-gradle-plugin)
 
 For details see http://nenick-android.blogspot.de/2015/02/android-studio-110-beta-4-and.html
 
@@ -17,3 +17,6 @@ Here an example with flavors https://github.com/nenick/AndroidStudioAndRobolectr
 
 ### Multi Modules (Android Library)
 Here an example with android library module https://github.com/nenick/AndroidStudioAndRobolectric/tree/library
+
+### More advanced example
+Adding stuff like code coverage, dependency injection https://github.com/nenick/android-gradle-template
