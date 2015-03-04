@@ -18,5 +18,5 @@ Here an example with flavors https://github.com/nenick/AndroidStudioAndRobolectr
 ### Multi Modules (Android Library)
 Here an example with android library module https://github.com/nenick/AndroidStudioAndRobolectric/tree/library
 
-### More advanced example
-Adding stuff like code coverage, dependency injection https://github.com/nenick/android-gradle-template
+### Separate Test Module
+For some use cases it is great to split tests in different modules https://github.com/nenick/android-gradle-template
