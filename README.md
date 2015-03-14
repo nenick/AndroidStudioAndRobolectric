@@ -1,11 +1,12 @@
 # AndroidStudioAndRobolectric
 
-- Android Studio 1.1
-- android gradle build tools 1.1.3
+- Android Studio 1.1 (http://tools.android.com/recent)
+- Android Gradle Build Tools 1.1.3 (https://developer.android.com/tools/revisions/gradle-plugin.html)
+- Gradle 2.3 (http://gradle.org/docs/current/release-notes)
 - Robolectric 3.0-SNAPSHOT (works much much better with Android SDK v21 than older releases)
 - no extra plugins necessary (but you should also try https://github.com/robolectric/robolectric-gradle-plugin)
 
-For details see http://nenick-android.blogspot.de/2015/02/android-studio-110-beta-4-and.html (Outdated)
+For details see http://nenick-android.blogspot.de/2015/02/android-studio-110-beta-4-and.html (Step by step guide is  outdated now, but updated one will follow)
 
 ## Get Started on command-line
 1. Just clone.
