@@ -13,12 +13,7 @@ public class CustomRobolectricRunner extends RobolectricTestRunner {
         String buildVariant = (BuildConfig.FLAVOR.isEmpty() ? "" : BuildConfig.FLAVOR+ "/") + BuildConfig.BUILD_TYPE;
         String manifestPath = "build/intermediates/manifests/full/" + buildVariant + "/AndroidManifest.xml";
         if (!new File(manifestPath).exists()) {
-
             module = "app/";
-
-            if (!new File(module + manifestPath).exists()) {
-                throw new IllegalStateException("AndroidManifest.xml not found at " + manifestPath + ". Try changing the working directory in your default JUnit configuration to $MODULE_DIR$ (Run -> Edit Configurations -> Defaults). Also see https://code.google.com/p/android/issues/detail?id=158015 for more details for this issue.");
-            }
         }
         System.setProperty("android.package", BuildConfig.APPLICATION_ID);
         System.setProperty("android.manifest", module + manifestPath);
