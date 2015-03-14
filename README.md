@@ -1,6 +1,6 @@
 # AndroidStudioAndRobolectric
 
-- Android Studio 1.1 [Overview](http://tools.android.com/recent)
+- Android Studio 1.1 [Overview](http://tools.android.com/recent) (works also with 1.2 preview 2)
 - Android Gradle Build Tools 1.1.3 [Overview](https://developer.android.com/tools/revisions/gradle-plugin.html)
 - Gradle 2.3 [Overview](http://gradle.org/docs/current/release-notes)
 - Robolectric 3.0-SNAPSHOT (works much much better with Android SDK v21 than older releases)
