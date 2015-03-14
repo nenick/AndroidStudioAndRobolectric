@@ -6,7 +6,7 @@
 - Robolectric 3.0-SNAPSHOT (works much much better with Android SDK v21 than older releases)
 - no extra plugins necessary (but you should also try https://github.com/robolectric/robolectric-gradle-plugin)
 
-For details see http://nenick-android.blogspot.de/2015/02/android-studio-110-beta-4-and.html (Step by step guide is  outdated now, but updated one will follow)
+For details see http://nenick-android.blogspot.de/2015/02/android-studio-110-beta-4-and.html (Step by step guide is  outdated now, but new one will follow)
 
 ## Get Started on command-line
 1. Just clone.
