@@ -19,11 +19,15 @@ android {
     }
 }
 
+repositories {
+    maven { url = "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
 
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
-    testCompile "org.robolectric:robolectric:2.4"
+    testCompile "org.robolectric:robolectric:3.0-SNAPSHOT"
 }

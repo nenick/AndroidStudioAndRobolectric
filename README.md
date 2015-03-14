@@ -1,16 +1,23 @@
 # AndroidStudioAndRobolectric
 
 - Android Studio 1.1
-- android gradle build tools 1.1.0
-- Robolectric 2.4
-- no extra plugins or to complex custom setup necessary (but if like you can try https://github.com/robolectric/robolectric-gradle-plugin)
+- android gradle build tools 1.1.3
+- Robolectric 3.0-SNAPSHOT (works much much better with Android SDK v21 than older releases)
+- no extra plugins necessary (but you should also try https://github.com/robolectric/robolectric-gradle-plugin)
 
-For details see http://nenick-android.blogspot.de/2015/02/android-studio-110-beta-4-and.html
+For details see http://nenick-android.blogspot.de/2015/02/android-studio-110-beta-4-and.html (Outdated)
 
-### Get Started
-1. Just clone and open this project with Android Studio
-2. Change the Build Variant // Test Artifact to Unit Test (http://tools.android.com/tech-docs/unit-testing-support)
+## Get Started on command-line
+1. Just clone.
+2. Go into the project directory.
+2. Run `./gradlew test` and get started with robolectric.
+
+## Get Started with Android Studio
+1. Import this project with Android Studio.
+2. Change the Build Variant // Test Artifact to Unit Test (http://tools.android.com/tech-docs/unit-testing-support).
 3. Right click on a test and get started with robolectric.
+
+## More example project setups
 
 ### Flavors
 Here an example with flavors https://github.com/nenick/AndroidStudioAndRobolectric/tree/flavors
@@ -19,4 +26,4 @@ Here an example with flavors https://github.com/nenick/AndroidStudioAndRobolectr
 Here an example with android library module https://github.com/nenick/AndroidStudioAndRobolectric/tree/library
 
 ### Separate Test Module
-For some use cases it is great to split tests in different modules https://github.com/nenick/android-gradle-template
+For some use cases it is great to split tests into different modules https://github.com/nenick/android-gradle-template
