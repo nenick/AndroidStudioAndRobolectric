@@ -117,3 +117,37 @@ public class RTxtParserFunction {
         }
     }
 }
+
+/* convertRTxt() test example
+    @Test
+    public void convertRTxt() {
+        String rTxt = "int anim abc_fade_in 0x7f040000" +
+                "\n" + "int anim abc_fade_out 0x7f040001" +
+                "\n" + "int id action_bar 0x7f080031" +
+                "\n" + "int styleable MenuItem_showAsAction 13" +
+                "\n" + "int[] styleable ActionMenuView { }" +
+                "\n" + "int[] styleable ActionMenuItemView { 0x0101013f }" +
+                "\n" + "int[] styleable ActionMode { 0x7f010001, 0x7f010007, 0x7f010008, 0x7f01000c, 0x7f01000e, 0x7f01001c }";
+
+        String result = RTxtParserFunction.apply(rTxt, "android.support.v7.appcompat");
+
+        String expectedResult = "package android.support.v7.appcompat;" +
+                "\n" + "\n" + "public final class R {" +
+                "\n" + "    public static final class anim {" +
+                "\n" + "        public static final int abc_fade_in = 0x7f040000;" +
+                "\n" + "        public static final int abc_fade_out = 0x7f040001;" +
+                "\n" + "    }" +
+                "\n" + "    public static final class id {" +
+                "\n" + "        public static final int action_bar = 0x7f080031;" +
+                "\n" + "    }" +
+                "\n" + "    public static final class styleable {" +
+                "\n" + "        public static final int MenuItem_showAsAction = 13;" +
+                "\n" + "        public static final int[] ActionMenuView = { };" +
+                "\n" + "        public static final int[] ActionMenuItemView = { 0x0101013f };" +
+                "\n" + "        public static final int[] ActionMode = { 0x7f010001, 0x7f010007, 0x7f010008, 0x7f01000c, 0x7f01000e, 0x7f01001c };" +
+                "\n" + "    }" +
+                "\n" + "}";
+
+        assertThat(result, is(expectedResult));
+    }
+ */
