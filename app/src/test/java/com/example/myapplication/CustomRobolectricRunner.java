@@ -4,19 +4,19 @@ import org.junit.runners.model.InitializationError;
 import org.robolectric.RobolectricTestRunner;
 
 import java.io.File;
+import java.lang.reflect.Field;
+import java.net.URL;
 
 public class CustomRobolectricRunner extends RobolectricTestRunner {
     public CustomRobolectricRunner(Class<?> testClass) throws InitializationError {
         super(testClass);
-        String module = "";
         String buildVariant = (BuildConfig.FLAVOR.isEmpty() ? "" : BuildConfig.FLAVOR+ "/") + BuildConfig.BUILD_TYPE;
-        String manifestPath = "build/intermediates/manifests/full/" + buildVariant + "/AndroidManifest.xml";
-        if (!new File(manifestPath).exists()) {
-            module = "app/";
-        }
+        String intermediatesPath = BuildConfig.class.getResource("").toString().replace("file:", "");
+        intermediatesPath = intermediatesPath.substring(0, intermediatesPath.indexOf("/classes"));
+
         System.setProperty("android.package", BuildConfig.APPLICATION_ID);
-        System.setProperty("android.manifest", module + manifestPath);
-        System.setProperty("android.resources", module + "build/intermediates/res/" + buildVariant);
-        System.setProperty("android.assets", module + "build/intermediates/assets/" + buildVariant);
+        System.setProperty("android.manifest", intermediatesPath + "/manifests/full/" + buildVariant + "/AndroidManifest.xml");
+        System.setProperty("android.resources", intermediatesPath + "/res/" + buildVariant);
+        System.setProperty("android.assets", intermediatesPath + "/assets/" + buildVariant);
     }
 }
