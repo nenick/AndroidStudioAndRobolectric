@@ -8,15 +8,15 @@ import java.io.File;
 public class CustomRobolectricRunner extends RobolectricTestRunner {
     public CustomRobolectricRunner(Class<?> testClass) throws InitializationError {
         super(testClass);
+        String module = "";
         String buildVariant = (BuildConfig.FLAVOR.isEmpty() ? "" : BuildConfig.FLAVOR + "/") + BuildConfig.BUILD_TYPE;
         String manifestPath = "build/intermediates/bundles/" + buildVariant + "/AndroidManifest.xml";
         if (!new File(manifestPath).exists()) {
-            throw new IllegalStateException("AndroidManifest.xml not found at " + manifestPath + ". Try changing the working directory in your default JUnit configuration to $MODULE_DIR$ (Run -> Edit Configurations -> Defaults). Also see https://code.google.com/p/android/issues/detail?id=158015 for more details for this issue.");
+            module = "app/";
         }
-
         System.setProperty("android.package", BuildConfig.APPLICATION_ID);
-        System.setProperty("android.manifest", manifestPath);
-        System.setProperty("android.resources", "build/intermediates/res/" + buildVariant);
-        System.setProperty("android.assets", "build/intermediates/assets/" + buildVariant);
+        System.setProperty("android.manifest", module + manifestPath);
+        System.setProperty("android.resources", module + "build/intermediates/res/" + buildVariant);
+        System.setProperty("android.assets", module + "build/intermediates/assets/" + buildVariant);
     }
 }
