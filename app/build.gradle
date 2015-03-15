@@ -32,4 +32,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
     testCompile "org.robolectric:robolectric:3.0-SNAPSHOT"
+    testCompile 'org.apache.maven:maven-ant-tasks:2.1.3'
 }
