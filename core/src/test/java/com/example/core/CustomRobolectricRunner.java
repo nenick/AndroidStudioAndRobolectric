@@ -12,7 +12,6 @@ public class CustomRobolectricRunner extends RobolectricTestRunner {
             intermediatesPath = intermediatesPath.substring(0, intermediatesPath.indexOf("/classes"));
         } else {
             intermediatesPath = intermediatesPath.substring(0, intermediatesPath.indexOf("/bundles")).replace("jar:", "");
-            intermediatesPath = intermediatesPath.substring(0, intermediatesPath.indexOf("/bundles")).replace("jar:", "");
         }
 
         System.setProperty("android.package", BuildConfig.APPLICATION_ID);
