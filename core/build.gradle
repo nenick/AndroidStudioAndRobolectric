@@ -41,7 +41,7 @@ afterEvaluate { project ->
     android.libraryVariants.each { variant ->
 
         tasks.getByName("assemble${variant.name.capitalize()}").doFirst {
-            def rTextFile = new File("core/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/R.txt")
+            def rTextFile = new File("$projectDir/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/R.txt")
             def content = RTxtParserFunction.apply(rTextFile.text, "android.support.v7.appcompat")
             def rClazzFile = new File("core/src/test/java/android/support/v7/appcompat/R.java");
             new File("core/src/test/java/android/support/v7/appcompat").mkdirs();
