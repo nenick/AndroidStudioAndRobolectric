@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(CustomRobolectricRunner.class)
-@Config(emulateSdk = 21, reportSdk = 21)
+@Config(emulateSdk = 21, reportSdk = 21, constants = BuildConfig.class)
 public class RobolectricTest {
     @Test
     public void testIt() {
