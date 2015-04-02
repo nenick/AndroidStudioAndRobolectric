@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.0"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.example.myapplication"
@@ -29,5 +29,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
     testCompile 'org.apache.maven:maven-ant-tasks:2.1.3'
-    testCompile "org.robolectric:robolectric:3.0-SNAPSHOT"
+    testCompile "org.robolectric:robolectric:3.0-rc2"
 }
