@@ -22,12 +22,7 @@ android {
 
 android.sourceSets.test.java.srcDirs += "build/generated/source/r/debug"
 
-repositories {
-    maven { url = "https://oss.sonatype.org/content/repositories/snapshots" }
-}
-
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.0.0'
 
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
@@ -36,117 +31,9 @@ dependencies {
 }
 
 afterEvaluate { project ->
-
     android.libraryVariants.each { variant ->
-
-        tasks.getByName("assemble${variant.name.capitalize()}").doFirst {
-            def rTextFile = new File("$projectDir/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/R.txt")
-            def content = RTxtParserFunction.apply(rTextFile.text, "android.support.v7.appcompat")
-            def rClazzFile = new File("$projectDir/src/test/java/android/support/v7/appcompat/R.java");
-            new File("$projectDir/src/test/java/android/support/v7/appcompat").mkdirs();
-            rClazzFile.createNewFile();
-            rClazzFile.write(content)
-        }
-
         tasks.getByName("test${variant.name.capitalize()}") {
             dependsOn "assemble${variant.name.capitalize()}"
         }
     }
 }
-
-
-public class RTxtParserFunction {
-
-    public static final int SEQMENT_INNER_CLAZZ = 1;
-    public static final int SEQMNET_FIELD_NAME = 2;
-    public static final int SEQMENT_FIELD_VALUE = 3;
-
-    public static String apply(String rTxt, String packageName) {
-        StringBuilder clazz = new StringBuilder();
-        addRClassStart(clazz, packageName);
-        addRClassBody(clazz, rTxt);
-        addRClassEnd(clazz);
-        return clazz.toString();
-    }
-
-    private static void addRClassStart(StringBuilder clazz, String packageName) {
-        clazz.append("package ").append(packageName).append(";").append("\n").append("\n");
-        clazz.append("public final class R {");
-    }
-
-    private static void addRClassEnd(StringBuilder clazz) {
-        clazz.append("\n").append("}");
-    }
-
-    private static void addRClassBody(StringBuilder clazz, String rTxt) {
-        String currentInlineClazz = "";
-        String[] rTxtLines = rTxt.split("\n");
-
-        for (String rTxtLine : rTxtLines) {
-            String[] lineSeqments = rTxtLine.split(" ");
-
-            if (!lineSeqments[SEQMENT_INNER_CLAZZ].equals(currentInlineClazz)) {
-                addInlineClazzEnd(clazz, currentInlineClazz);
-                currentInlineClazz = lineSeqments[SEQMENT_INNER_CLAZZ];
-                addInlineClazzStart(clazz, currentInlineClazz);
-            }
-
-            if (rTxtLine.contains("{")) {
-                clazz.append("\n").append("        ").append("public static final int[] ").append(lineSeqments[SEQMNET_FIELD_NAME]).append(" =");
-                for (int i = SEQMNET_FIELD_NAME + 1; i < lineSeqments.length; i++) {
-                    clazz.append(" ").append(lineSeqments[i]);
-                }
-                clazz.append(";");
-            } else {
-                clazz.append("\n").append("        ").append("public static final int ").append(lineSeqments[SEQMNET_FIELD_NAME]).append(" = ").append(lineSeqments[SEQMENT_FIELD_VALUE]).append(";");
-            }
-        }
-        clazz.append("\n").append("    }");
-    }
-
-    private static void addInlineClazzStart(StringBuilder clazz, String inlineClazz) {
-        clazz.append("\n").append("    ")
-                .append("public static final class ").append(inlineClazz).append(" {");
-    }
-
-    private static void addInlineClazzEnd(StringBuilder clazz, String inlineClazz) {
-        if (!inlineClazz.isEmpty()) {
-            clazz.append("\n").append("    ")
-                    .append("}");
-        }
-    }
-}
-
-/* convertRTxt() test example
-    @Test
-    public void convertRTxt() {
-        String rTxt = "int anim abc_fade_in 0x7f040000" +
-                "\n" + "int anim abc_fade_out 0x7f040001" +
-                "\n" + "int id action_bar 0x7f080031" +
-                "\n" + "int styleable MenuItem_showAsAction 13" +
-                "\n" + "int[] styleable ActionMenuView { }" +
-                "\n" + "int[] styleable ActionMenuItemView { 0x0101013f }" +
-                "\n" + "int[] styleable ActionMode { 0x7f010001, 0x7f010007, 0x7f010008, 0x7f01000c, 0x7f01000e, 0x7f01001c }";
-
-        String result = RTxtParserFunction.apply(rTxt, "android.support.v7.appcompat");
-
-        String expectedResult = "package android.support.v7.appcompat;" +
-                "\n" + "\n" + "public final class R {" +
-                "\n" + "    public static final class anim {" +
-                "\n" + "        public static final int abc_fade_in = 0x7f040000;" +
-                "\n" + "        public static final int abc_fade_out = 0x7f040001;" +
-                "\n" + "    }" +
-                "\n" + "    public static final class id {" +
-                "\n" + "        public static final int action_bar = 0x7f080031;" +
-                "\n" + "    }" +
-                "\n" + "    public static final class styleable {" +
-                "\n" + "        public static final int MenuItem_showAsAction = 13;" +
-                "\n" + "        public static final int[] ActionMenuView = { };" +
-                "\n" + "        public static final int[] ActionMenuItemView = { 0x0101013f };" +
-                "\n" + "        public static final int[] ActionMode = { 0x7f010001, 0x7f010007, 0x7f010008, 0x7f01000c, 0x7f01000e, 0x7f01001c };" +
-                "\n" + "    }" +
-                "\n" + "}";
-
-        assertThat(result, is(expectedResult));
-    }
- */

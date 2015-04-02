@@ -1,22 +1,36 @@
 package com.example.core;
 
 import org.junit.runners.model.InitializationError;
+import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
+import org.robolectric.manifest.AndroidManifest;
+import org.robolectric.res.FileFsFile;
+import org.robolectric.res.FsFile;
 
-public class CustomRobolectricRunner extends RobolectricTestRunner {
-    public CustomRobolectricRunner(Class<?> testClass) throws InitializationError {
-        super(testClass);
-        String buildVariant = (BuildConfig.FLAVOR.isEmpty() ? "" : BuildConfig.FLAVOR+ "/") + BuildConfig.BUILD_TYPE;
-        String intermediatesPath = BuildConfig.class.getResource("").toString().replace("file:", "");
-        if(intermediatesPath.contains("/classes/")) {
-            intermediatesPath = intermediatesPath.substring(0, intermediatesPath.indexOf("/classes"));
+public class CustomRobolectricRunner extends RobolectricGradleTestRunner {
+
+    public CustomRobolectricRunner(Class<?> klass) throws InitializationError {
+        super(klass);
+    }
+
+    protected AndroidManifest getAppManifest(Config config) {
+        AndroidManifest appManifest = super.getAppManifest(config);
+        FsFile androidManifestFile = appManifest.getAndroidManifestFile();
+
+        if (androidManifestFile.exists()) {
+            return appManifest;
         } else {
-            intermediatesPath = intermediatesPath.substring(0, intermediatesPath.indexOf("/bundles")).replace("jar:", "");
+            String moduleRoot = getModuleRootPath(config);
+            androidManifestFile = FileFsFile.from(moduleRoot, appManifest.getAndroidManifestFile().getPath());
+            FsFile resDirectory = FileFsFile.from(moduleRoot, appManifest.getResDirectory().getPath());
+            FsFile assetsDirectory = FileFsFile.from(moduleRoot, appManifest.getAssetsDirectory().getPath());
+            return new AndroidManifest(androidManifestFile, resDirectory, assetsDirectory);
         }
+    }
 
-        System.setProperty("android.package", BuildConfig.APPLICATION_ID);
-        System.setProperty("android.manifest", intermediatesPath + "/bundles/" + buildVariant + "/AndroidManifest.xml");
-        System.setProperty("android.resources", intermediatesPath + "/res/" + buildVariant);
-        System.setProperty("android.assets", intermediatesPath + "/assets/" + buildVariant);
+    private String getModuleRootPath(Config config) {
+        String moduleRoot = config.constants().getResource("").toString().replace("file:", "").replace("jar:", "");
+        return moduleRoot.substring(0, moduleRoot.indexOf("/build"));
     }
 }

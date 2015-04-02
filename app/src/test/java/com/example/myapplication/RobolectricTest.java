@@ -5,10 +5,13 @@ import android.widget.TextView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
+import org.robolectric.annotation.Config;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(CustomRobolectricRunner.class)
+@Config(constants = BuildConfig.class)
 public class RobolectricTest {
     @Test
     public void testIt() {

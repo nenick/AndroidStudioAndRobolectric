@@ -19,10 +19,6 @@ android {
     }
 }
 
-repositories {
-    maven { url = "https://oss.sonatype.org/content/repositories/snapshots" }
-}
-
 dependencies {
     compile 'com.android.support:appcompat-v7:22.0.0'
     releaseCompile project(path: ':core', configuration: 'release')
