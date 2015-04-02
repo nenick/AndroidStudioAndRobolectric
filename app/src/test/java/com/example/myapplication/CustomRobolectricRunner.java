@@ -23,15 +23,17 @@ public class CustomRobolectricRunner extends RobolectricGradleTestRunner {
 
     protected AndroidManifest getAppManifest(Config config) {
         AndroidManifest appManifest = super.getAppManifest(config);
-        String moduleRoot = getModuleRootPath(config);
+        FsFile androidManifestFile = appManifest.getAndroidManifestFile();
 
-        FsFile androidManifestFile = FileFsFile.from(moduleRoot,  appManifest.getAndroidManifestFile().getPath());
-        if(!androidManifestFile.exists()) {
-            androidManifestFile = FileFsFile.from(moduleRoot,  appManifest.getAndroidManifestFile().getPath().replace("bundles", "manifests/full"));
+        if (androidManifestFile.exists()) {
+            return appManifest;
+        } else {
+            String moduleRoot = getModuleRootPath(config);
+            androidManifestFile = FileFsFile.from(moduleRoot, appManifest.getAndroidManifestFile().getPath().replace("bundles", "manifests/full"));
+            FsFile resDirectory = FileFsFile.from(moduleRoot, appManifest.getResDirectory().getPath());
+            FsFile assetsDirectory = FileFsFile.from(moduleRoot, appManifest.getAssetsDirectory().getPath());
+            return new AndroidManifest(androidManifestFile, resDirectory, assetsDirectory);
         }
-        FsFile resDirectory = FileFsFile.from(moduleRoot, appManifest.getResDirectory().getPath());
-        FsFile assetsDirectory = FileFsFile.from(moduleRoot, appManifest.getAssetsDirectory().getPath());
-        return new AndroidManifest(androidManifestFile, resDirectory, assetsDirectory);
     }
 
     private String getModuleRootPath(Config config) {
