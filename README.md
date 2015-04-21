@@ -24,7 +24,8 @@ For details see http://nenick-android.blogspot.de/2015/03/android-studio-110-and
 Here an example with flavors https://github.com/nenick/AndroidStudioAndRobolectric/tree/flavors
 
 ### Multi Modules (Android Library)
-Here an example with android library module https://github.com/nenick/AndroidStudioAndRobolectric/tree/library (And a special example when the library has aar dependencies https://github.com/nenick/AndroidStudioAndRobolectric/tree/library)
+Here an example with android library module https://github.com/nenick/AndroidStudioAndRobolectric/tree/library 
+(And a special example when the library has aar dependencies https://github.com/nenick/AndroidStudioAndRobolectric/tree/library)
 
 ### Separate Test Module
 For some use cases it is great to split tests into different modules https://github.com/nenick/android-gradle-template
