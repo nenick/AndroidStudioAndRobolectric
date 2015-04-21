@@ -1,6 +1,6 @@
 # AndroidStudioAndRobolectric
 
-- Android Studio 1.1 [Overview](http://tools.android.com/recent) (works also with 1.2 preview 4)
+- Android Studio 1.1 [Overview](http://tools.android.com/recent) (works also with 1.2 Beta)
 - Android Gradle Build Tools 1.1.3 [Overview](https://developer.android.com/tools/revisions/gradle-plugin.html)
 - Gradle 2.3 [Overview](http://gradle.org/docs/current/release-notes)
 - Robolectric 3.0-RC2 (works much much better with Android SDK v21 than older releases)
@@ -24,7 +24,7 @@ For details see http://nenick-android.blogspot.de/2015/03/android-studio-110-and
 Here an example with flavors https://github.com/nenick/AndroidStudioAndRobolectric/tree/flavors
 
 ### Multi Modules (Android Library)
-Here an example with android library module https://github.com/nenick/AndroidStudioAndRobolectric/tree/library
+Here an example with android library module https://github.com/nenick/AndroidStudioAndRobolectric/tree/library (A special example when the library has aar dependencies https://github.com/nenick/AndroidStudioAndRobolectric/tree/library)
 
 ### Separate Test Module
 For some use cases it is great to split tests into different modules https://github.com/nenick/android-gradle-template
