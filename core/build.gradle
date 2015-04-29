@@ -38,7 +38,7 @@ dependencies {
 afterEvaluate { project ->
 
     android.libraryVariants.each { variant ->
-
+        // workaround for missing R class for aar dependencies
         tasks.getByName("assemble${variant.name.capitalize()}").doFirst {
             def rTextFile = new File("$projectDir/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/R.txt")
             def content = RTxtParserFunction.apply(rTextFile.text, "android.support.v7.appcompat")
@@ -54,7 +54,7 @@ afterEvaluate { project ->
     }
 }
 
-
+// workaround for missing R class in aar dependencies
 public class RTxtParserFunction {
 
     public static final int SEQMENT_INNER_CLAZZ = 1;
@@ -150,3 +150,13 @@ public class RTxtParserFunction {
         assertThat(result, is(expectedResult));
     }
  */
+ 
+// another approach to workaround the missing R class for aar dependencies
+// which comes from https://github.com/robolectric/robolectric/issues/1737
+task copyTask(type: Copy) {
+  println "Copying com/mapzen/pelias/R.java to android/support/v7/appcompat/R.java"
+  from 'build/generated/source/r/debug/com/mapzen/pelias'
+  into 'build/generated/source/r/debug/android/support/v7/appcompat'
+  include 'R.java'
+  filter { line -> line.contains('package com.mapzen.pelias;') ? 'package android.support.v7.appcompat;' : line }
+}
