@@ -8,8 +8,6 @@
 - Robolectric 3.0-RC2 (works much much better with Android SDK v21 than older releases)
 - no extra plugins necessary
 
-For details see http://nenick-android.blogspot.de/2015/03/android-studio-110-and-robolectric-30.html
-
 ## Get Started on command-line
 1. Just clone.
 2. Go into the project directory.
