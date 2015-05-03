@@ -19,6 +19,8 @@ android {
     }
 }
 
+apply from: 'build.workaround-missing-resource.gradle'
+
 repositories {
     maven { url = "https://oss.sonatype.org/content/repositories/snapshots" }
 }
