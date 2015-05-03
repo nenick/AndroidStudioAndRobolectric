@@ -20,7 +20,6 @@ android {
     }
 }
 
-android.sourceSets.test.java.srcDirs += "build/generated/source/r/debug"
 apply from: "build.workaround-missing-resource.gradle"
 
 dependencies {
@@ -29,12 +28,4 @@ dependencies {
     testCompile "org.mockito:mockito-core:1.9.5"
     testCompile 'org.apache.maven:maven-ant-tasks:2.1.3'
     testCompile "org.robolectric:robolectric:3.0-rc2"
-}
-
-afterEvaluate { project ->
-    android.libraryVariants.each { variant ->
-        tasks.getByName("test${variant.name.capitalize()}") {
-            dependsOn "assemble${variant.name.capitalize()}"
-        }
-    }
 }
