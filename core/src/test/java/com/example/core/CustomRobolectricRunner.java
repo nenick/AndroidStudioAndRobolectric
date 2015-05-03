@@ -8,6 +8,12 @@ import org.robolectric.manifest.AndroidManifest;
 import org.robolectric.res.FileFsFile;
 import org.robolectric.res.FsFile;
 
+/**
+ * More dynamic path resolution.
+ *
+ * This workaround is only for Mac Users necessary and only if they don't use the $MODULE_DIR$
+ * workaround. Follow this issue at https://code.google.com/p/android/issues/detail?id=158015
+ */
 public class CustomRobolectricRunner extends RobolectricGradleTestRunner {
 
     public CustomRobolectricRunner(Class<?> klass) throws InitializationError {
@@ -18,6 +24,8 @@ public class CustomRobolectricRunner extends RobolectricGradleTestRunner {
         AndroidManifest appManifest = super.getAppManifest(config);
         FsFile androidManifestFile = appManifest.getAndroidManifestFile();
 
+        // Workaround also wrong paths for res and assets.
+        // This will be fixed with next robolectric release https://github.com/robolectric/robolectric/issues/1709
         if (androidManifestFile.exists()) {
             FsFile resDirectory = FileFsFile.from(appManifest.getAndroidManifestFile().getPath().replace("AndroidManifest.xml", "res"));
             FsFile assetsDirectory = FileFsFile.from(appManifest.getAndroidManifestFile().getPath().replace("AndroidManifest.xml", "assets"));

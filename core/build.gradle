@@ -21,6 +21,7 @@ android {
 }
 
 android.sourceSets.test.java.srcDirs += "build/generated/source/r/debug"
+apply from: "build.workaround-missing-resource.gradle"
 
 dependencies {
 

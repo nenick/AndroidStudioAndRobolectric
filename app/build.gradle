@@ -19,6 +19,8 @@ android {
     }
 }
 
+apply from: "build.workaround-missing-resource.gradle"
+
 dependencies {
     compile 'com.android.support:appcompat-v7:22.0.0'
     releaseCompile project(path: ':core', configuration: 'release')

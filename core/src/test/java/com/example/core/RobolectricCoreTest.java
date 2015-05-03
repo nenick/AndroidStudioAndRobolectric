@@ -9,7 +9,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(CustomRobolectricRunner.class)
-@Config(constants = BuildConfig.class)
 public class RobolectricCoreTest {
     @Test
     public void testIt() {
