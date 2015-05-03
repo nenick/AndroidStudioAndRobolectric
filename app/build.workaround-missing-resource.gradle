@@ -25,13 +25,11 @@ gradle.projectsEvaluated {
             variationPath = uncapitalize(productFlavorNames) + "/${variationPath}"
         }
 
-        // Create specific copy task for each variant
+        // Specific copy task for each variant
         def copyTestResourcesTask = project.tasks.create("copyTest${variationName}Resources", Copy)
         copyTestResourcesTask.from("${projectDir}/src/test/resources")
         copyTestResourcesTask.into("${testClassesPath}/${variationPath}")
-
-        // Force the test task first to copy necessary resources when executed.
-        tasks."test${variationName}".dependsOn(copyTestResourcesTask)
+        copyTestResourcesTask.execute()
     }
 }
 
