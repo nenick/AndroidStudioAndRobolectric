@@ -1,11 +1,11 @@
 # AndroidStudioAndRobolectric
 
-- Android Studio 1.2 [Overview](http://tools.android.com/recent)
-- Android Gradle Build Tools 1.2.2 [Overview](http://tools.android.com/tech-docs/new-build-system), [Latest Version List](http://mvnrepository.com/artifact/com.android.tools.build/gradle)
+- Android Studio 1.2.1.1 [Overview](http://tools.android.com/recent)
+- Android Gradle Build Tools 1.2.3 [Overview](http://tools.android.com/tech-docs/new-build-system), [Latest Version List](http://mvnrepository.com/artifact/com.android.tools.build/gradle)
 - Android SDK v21
-- Android AppCompat v22.0.0
+- Android AppCompat v22.1.1
 - Gradle 2.3 [Overview](http://gradle.org/docs/current/release-notes)
-- Robolectric 3.0-RC2 (works much much better with Android SDK v21 than older releases)
+- Robolectric 3.0-RC3 (works much much better with Android SDK v21 than older releases)
 - no extra plugins necessary
 
 ## Get Started on command-line

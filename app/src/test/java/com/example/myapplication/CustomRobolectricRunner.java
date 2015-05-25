@@ -6,14 +6,14 @@ import org.robolectric.annotation.Config;
 import org.robolectric.manifest.AndroidManifest;
 import org.robolectric.res.FileFsFile;
 import org.robolectric.res.FsFile;
-import org.robolectric.util.Logger;
-import org.robolectric.util.ReflectionHelpers;
 
 /**
  * More dynamic path resolution.
  *
  * This workaround is only for Mac Users necessary and only if they don't use the $MODULE_DIR$
- * workaround. Follow this issue at https://code.google.com/p/android/issues/detail?id=158015
+ * workaround mentioned at http://robolectric.org/getting-started/.
+ *
+ * Follow this issue at https://code.google.com/p/android/issues/detail?id=158015
  */
 public class CustomRobolectricRunner extends RobolectricGradleTestRunner {
 
@@ -30,8 +30,8 @@ public class CustomRobolectricRunner extends RobolectricGradleTestRunner {
         } else {
             String moduleRoot = getModuleRootPath(config);
             androidManifestFile = FileFsFile.from(moduleRoot, appManifest.getAndroidManifestFile().getPath().replace("bundles", "manifests/full"));
-            FsFile resDirectory = FileFsFile.from(moduleRoot, appManifest.getResDirectory().getPath());
-            FsFile assetsDirectory = FileFsFile.from(moduleRoot, appManifest.getAssetsDirectory().getPath());
+            FsFile resDirectory = FileFsFile.from(moduleRoot, appManifest.getResDirectory().getPath().replace("/res", "").replace("bundles", "res"));
+            FsFile assetsDirectory = FileFsFile.from(moduleRoot, appManifest.getAssetsDirectory().getPath().replace("/assets", "").replace("bundles", "assets"));
             return new AndroidManifest(androidManifestFile, resDirectory, assetsDirectory);
         }
     }
