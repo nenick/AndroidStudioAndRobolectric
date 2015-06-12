@@ -39,9 +39,13 @@ afterEvaluate { project ->
 // workaround the missing R class for aar dependencies
 // original solution comes from https://github.com/robolectric/robolectric/issues/1737
 // more dynamic solution is posted at https://github.com/robolectric/robolectric/issues/1796#issuecomment-101422012
+
+println "++#########++"
+println 'build/generated/source/r/debug/com/example/core'
+
 task copyAppcompat(type: Copy) {
-  from 'build/generated/source/r/debug/com/example/core'
-  into 'src/test/java/android/support/v7/appcompat'
+  from 'build/generated/source/r/debug/com/example/core'.replace("/", File.separator)
+  into 'src/test/java/android/support/v7/appcompat'.replace("/", File.separator)
   include 'R.java'
   filter { line -> line.contains('package com.example.core;') ? 'package android.support.v7.appcompat;' : line }
 }
