@@ -24,12 +24,8 @@ public class CustomRobolectricRunner extends RobolectricGradleTestRunner {
         AndroidManifest appManifest = super.getAppManifest(config);
         FsFile androidManifestFile = appManifest.getAndroidManifestFile();
 
-        // Workaround also wrong paths for res and assets.
-        // This will be fixed with next robolectric release https://github.com/robolectric/robolectric/issues/1709
         if (androidManifestFile.exists()) {
-            FsFile resDirectory = FileFsFile.from(appManifest.getAndroidManifestFile().getPath().replace("AndroidManifest.xml", "res"));
-            FsFile assetsDirectory = FileFsFile.from(appManifest.getAndroidManifestFile().getPath().replace("AndroidManifest.xml", "assets"));
-            return new AndroidManifest(androidManifestFile, resDirectory, assetsDirectory);
+            return appManifest;
         } else {
             String moduleRoot = getModuleRootPath(config);
             androidManifestFile = FileFsFile.from(moduleRoot, appManifest.getAndroidManifestFile().getPath());
