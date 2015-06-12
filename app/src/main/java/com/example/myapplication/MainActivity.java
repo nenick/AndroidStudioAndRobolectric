@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -9,7 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+
+import com.example.core.CoreActivity;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -25,6 +27,9 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
+    public void onCoreClick(View view) {
+        startActivity(new Intent(this, CoreActivity.class));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

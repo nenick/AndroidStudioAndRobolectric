@@ -10,4 +10,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Core"
+        android:id="@+id/button"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="41dp"
+        android:onClick="onCoreClick"/>
+
 </RelativeLayout>

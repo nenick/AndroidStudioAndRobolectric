@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">core</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world_core">Hello world Core!</string>
     <string name="action_settings">Settings</string>
 </resources>
